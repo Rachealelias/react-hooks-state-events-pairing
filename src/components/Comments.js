@@ -1,20 +1,23 @@
-import React from "react";
+import React,{useState} from "react";
 import  Comment  from "./Comment"
 import Search from "./Search.js";
 
 const Comments = ({comments}) => {
-
-    const commentsList = comments.map((comment) => (
-        <Comment key={comment.id} user={comment.user} userComment={comment.comment} />
-    ))
+    const[search, setSearch] = useState("")
+    const commentsList = comments
+    .filter(comment => search === "" || comment.user.toLowerCase().startsWith(search.toLowerCase()))
+    .map((comment) => <Comment key={comment.id} user={comment.user} userComment={comment.comment} />)
+    
+    
     const totalComments = comments.length
     return(
         <div>
             <h1>{totalComments} comments</h1>
-            <Search comments={comments}/>
+            <Search setSearch={setSearch} comments={comments}/>
             <div id="comments">{commentsList}</div>
 
         </div>
+     //const findComment = comments.filter((comment) => comment.user ===search);
     )
 }
 

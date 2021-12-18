@@ -1,36 +1,19 @@
-import  React, {useState} from "react";
-import Comment from "./Comment";
+import  React from "react";
 
-function Search({comments}){
-    //console.log(comments)
-const[search, setSearch] = useState("")
-//let findComment =[]
-
+function Search({ setSearch}){
 
 function handleSubmit(event){
     event.preventDefault();
-    //console.log(event)
-    //const searchComment = event.target[0].value
-    const findComment = comments.filter((comment) => comment.user ===search);
-     console.log(findComment)
-     //setSearch(findComment)
-    
-}
+     setSearch(event.target[0].value)
 
-// const handleDisplay = findComment.map((comment) => (
-//     <Comment key={comment.id} user={comment.user} userComment={comment.comment} />
-// ))
+    }
  
 return(
      <form onSubmit={handleSubmit}>
-     
-         <input type="text"
+      <input type="text"
          placeholder="username"
-         value= {search}
-         onChange={(e) => setSearch(e.target.value)}
          />
          <button> search </button>
-        <h2></h2>
      </form>
  )
 }

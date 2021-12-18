@@ -12,6 +12,9 @@ function addDislike(){
     setDislikeComment((dislikeComment) => dislikeComment + 1)
 }
 
+
+
+
     return(
 
         <div className="comment-list">
