@@ -4,10 +4,16 @@ import Search from "./Search.js";
 
 const Comments = ({comments}) => {
     const[search, setSearch] = useState("")
-    const commentsList = comments
+    const [commentList, setCommentsList] = useState(comments)
+    const commentsList = commentList
     .filter(comment => search === "" || comment.user.toLowerCase().startsWith(search.toLowerCase()))
-    .map((comment) => <Comment key={comment.id} user={comment.user} userComment={comment.comment} />)
+    .map((comment) => <Comment key={comment.id} user={comment.user} userComment={comment.comment} id={comment.id} handleDelete={handleDelete}/>)
     
+
+    function handleDelete(id) {
+    const comentList = commentList.filter((comment) => comment.id !==id)
+    setCommentsList(comentList);
+    }
     
     const totalComments = comments.length
     return(

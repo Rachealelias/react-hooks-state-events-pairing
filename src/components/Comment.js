@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 
-function Comment({user, userComment}){
+function Comment({user, userComment, handleDelete, id}){
    const [likeComment, setLikeComment] = useState(0)
    const [dislikeComment, setDislikeComment] = useState(0)
 
@@ -14,11 +14,10 @@ function addDislike(){
 
 
 
-
     return(
 
         <div className="comment-list">
-            <h3>{user} <button>delete</button></h3>
+            <h3>{user} <button onClick={() => handleDelete(id)}>delete</button></h3>
             <p>{userComment}</p>
             <button onClick={addLike} > {likeComment} 👍 </button>
             <button onClick={addDislike}> {dislikeComment} 👎</button>
